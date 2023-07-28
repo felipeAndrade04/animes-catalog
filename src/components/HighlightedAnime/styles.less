@@ -1,0 +1,38 @@
+.main-anime {
+  display: flex;
+  gap: 24px;
+
+  img {
+    width: 70%;
+    height: 300px;
+    border-radius: @border-radius-md;
+  }
+
+  &__infos {
+    h1 {
+      font-size: 40px;
+    }
+
+    p {
+      color: @text-color-secondary;
+      margin-top: 16px;
+    }
+
+    &-badges {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: @primary-color;
+
+      &-badge {
+        border: 1px solid @primary-color;
+        border-radius: @border-radius-sm;
+        padding: 0px 4px;
+      }
+    }
+
+    button {
+      margin-top: 32px;
+    }
+  }
+}
