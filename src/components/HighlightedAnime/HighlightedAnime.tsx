@@ -1,14 +1,16 @@
-import { Button } from 'antd';
+import { Button, Typography } from 'antd';
 import { YoutubeOutlined } from '@ant-design/icons';
 import { AverageRating } from '../AverageRating';
+
+const { Paragraph, Title } = Typography;
 
 export function HighlightedAnime() {
   return (
     <article className="main-anime">
-      <img src="https://media.kitsu.io/anime/cover_images/1/large.jpg?1416336000" alt="Capa" />
+      <img src="https://media.kitsu.io/anime/cover_images/9/large.jpg" alt="Capa" />
 
       <div className="main-anime__infos">
-        <h1>Cowboy Bebop</h1>
+        <Title className="main-anime__infos-title">Cowboy Bebop</Title>
         <div className="main-anime__infos-badges">
           <span className="main-anime__infos-badges-badge">R</span>
           <span className="main-anime__infos-badges-badge">TV</span>
@@ -16,7 +18,15 @@ export function HighlightedAnime() {
           <span>25m</span>
           <AverageRating score={8.85} />
         </div>
-        <p>In the year 2071, humanity has colonoized several of the planets and moons...</p>
+
+        <Paragraph className="main-anime__infos-paragraph" ellipsis={{ rows: 2 }}>
+          In the year 2071, humanity has colonoized several of the planets and moons In the year
+          2071, humanity has colonoized several of the planets and moons In the year 2071, humanity
+          has colonoized several of the planets and moons In the year 2071, humanity has colonoized
+          several of the planets and moonsolonoized several of the planets and moons In the year
+          2071, humanity has colonoized several of the planets and moons In the year 2071, humanity
+          has colonoized several of the planets and moo
+        </Paragraph>
 
         <Button ghost shape="round" icon={<YoutubeOutlined />} size="middle">
           Assistir Trailer
