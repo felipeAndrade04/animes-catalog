@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import AnimeServices from '@app/services/Anime';
 import { HomeProps } from '@app/components/Home/Home.types';
 
-export default function HomePage({ trendingAnimes }: HomeProps) {
+export default function HomePage({ trendingAnimes, highlightedAnine }: HomeProps) {
   return (
     <div>
       <Head>
@@ -13,7 +13,7 @@ export default function HomePage({ trendingAnimes }: HomeProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Home trendingAnimes={trendingAnimes} />
+      <Home trendingAnimes={trendingAnimes} highlightedAnine={highlightedAnine} />
     </div>
   );
 }
@@ -21,5 +21,5 @@ export default function HomePage({ trendingAnimes }: HomeProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const response = await AnimeServices.listTrending();
 
-  return { props: { trendingAnimes: response } };
+  return { props: { trendingAnimes: response, highlightedAnine: response[0] } };
 };

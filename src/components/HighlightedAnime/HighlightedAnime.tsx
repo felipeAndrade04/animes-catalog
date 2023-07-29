@@ -1,36 +1,44 @@
 import { Button, Typography } from 'antd';
 import { YoutubeOutlined } from '@ant-design/icons';
 import { AverageRating } from '../AverageRating';
+import { HighlightedAnimeProps } from './HighlightedAnime.types';
 
 const { Paragraph, Title } = Typography;
 
-export function HighlightedAnime() {
+export function HighlightedAnime({
+  description,
+  title,
+  averageRating,
+  badge1,
+  badge2,
+  episodeCount,
+  episodeLength,
+  youtubeVideoId,
+  coverUrl,
+}: HighlightedAnimeProps) {
   return (
     <article className="main-anime">
-      <img src="https://media.kitsu.io/anime/cover_images/9/large.jpg" alt="Capa" />
+      <img src={coverUrl} alt={`${title} - cover`} className="main-anime__cover" />
 
       <div className="main-anime__infos">
-        <Title className="main-anime__infos-title">Cowboy Bebop</Title>
+        <Title className="main-anime__infos-title">{title}</Title>
         <div className="main-anime__infos-badges">
-          <span className="main-anime__infos-badges-badge">R</span>
-          <span className="main-anime__infos-badges-badge">TV</span>
-          <span>Ep 1/26</span>
-          <span>25m</span>
-          <AverageRating score={8.85} />
+          {badge1 && <span className="main-anime__infos-badges-badge">{badge1}</span>}
+          {badge2 && <span className="main-anime__infos-badges-badge">{badge2}</span>}
+          {episodeCount && <span>Ep 1/{episodeCount}</span>}
+          {episodeLength && <span>{episodeLength}m</span>}
+          {averageRating && <AverageRating score={averageRating} />}
         </div>
 
         <Paragraph className="main-anime__infos-paragraph" ellipsis={{ rows: 2 }}>
-          In the year 2071, humanity has colonoized several of the planets and moons In the year
-          2071, humanity has colonoized several of the planets and moons In the year 2071, humanity
-          has colonoized several of the planets and moons In the year 2071, humanity has colonoized
-          several of the planets and moonsolonoized several of the planets and moons In the year
-          2071, humanity has colonoized several of the planets and moons In the year 2071, humanity
-          has colonoized several of the planets and moo
+          {description}
         </Paragraph>
 
-        <Button ghost shape="round" icon={<YoutubeOutlined />} size="middle">
-          Assistir Trailer
-        </Button>
+        {youtubeVideoId && (
+          <Button ghost shape="round" icon={<YoutubeOutlined />} size="middle">
+            Assistir Trailer
+          </Button>
+        )}
       </div>
     </article>
   );

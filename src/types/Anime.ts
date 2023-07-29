@@ -28,7 +28,7 @@ export interface AnimeAttributes {
   coverImage: CoverImage;
   episodeCount: any;
   episodeLength: number;
-  youtubeVideoId: string;
+  youtubeVideoId?: string;
   showType: string;
 }
 
