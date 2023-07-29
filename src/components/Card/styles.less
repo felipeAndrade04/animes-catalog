@@ -3,8 +3,6 @@
   padding: 8px;
   border-radius: @border-radius-md;
   background: @card-background;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   box-shadow: @box-shadow-base;
   transition: transform 0.2s ease-in;
   cursor: pointer;
@@ -17,9 +15,7 @@
   &-image {
     height: 284px;
     width: 200px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
     border-radius: @border-radius-sm;
   }
 
@@ -27,10 +23,12 @@
     position: absolute;
     top: 16px;
     right: 16px;
+    box-shadow: @box-shadow-base;
   }
 
-  p {
-    margin: 0px;
-    padding: 16px 0px 8px;
+  &-title {
+    margin: 16px 0px 8px !important;
+    color: @text-color !important;
+    max-width: 200px;
   }
 }
