@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { AnimeServicesInterface } from './animeServices.types';
-import { AnimeResponseData } from '@app/types/Anime';
+import { Anime, AnimesResponseData, AnimeResponseData } from '@app/types/Anime';
 
 export class AnimeServices implements AnimeServicesInterface {
   constructor(readonly http: AxiosInstance) {
@@ -9,7 +9,7 @@ export class AnimeServices implements AnimeServicesInterface {
 
   async listTrending() {
     try {
-      const response = await this.http.get<AnimeResponseData>('/trending/anime', {
+      const response = await this.http.get<AnimesResponseData>('/trending/anime', {
         params: {
           sort: 'ratingRank',
         },
@@ -22,6 +22,20 @@ export class AnimeServices implements AnimeServicesInterface {
       return [];
     } catch {
       return [];
+    }
+  }
+
+  async getById(id: string) {
+    try {
+      const response = await this.http.get<AnimeResponseData>(`/anime/${id}`);
+
+      if (response.status === 200) {
+        return response.data.data;
+      }
+
+      return {} as Anime;
+    } catch {
+      return {} as Anime;
     }
   }
 }
