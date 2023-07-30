@@ -1,0 +1,32 @@
+.carousel {
+  &-container {
+    margin: 0 48px;
+  }
+
+  &-title {
+    font-size: 20px !important;
+    color: @text-color !important;
+    text-align: center !important;
+  }
+}
+
+@media screen and (min-width: @breakpoint-sm) {
+  .carousel {
+    &-title {
+      text-align: left !important;
+    }
+  }
+}
+
+@media screen and (min-width: @breakpoint-md) {
+  .carousel {
+    &-container {
+      margin: 0 24px;
+    }
+
+    &-title {
+      font-size: 24px !important;
+      color: @text-color !important;
+    }
+  }
+}
