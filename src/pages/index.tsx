@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import AnimeServices from '@app/services/Anime';
 import { HomeProps } from '@app/components/Home/Home.types';
 
-export default function HomePage({ trendingAnimes, highlightedAnine }: HomeProps) {
+export default function HomePage({ trendingAnimes, categories, animesByCategory }: HomeProps) {
   return (
     <div>
       <Head>
@@ -13,13 +13,34 @@ export default function HomePage({ trendingAnimes, highlightedAnine }: HomeProps
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Home trendingAnimes={trendingAnimes} highlightedAnine={highlightedAnine} />
+      <Home
+        trendingAnimes={trendingAnimes}
+        categories={categories}
+        animesByCategory={animesByCategory}
+      />
     </div>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await AnimeServices.listTrending();
+  const responseCategory = await AnimeServices.listAnimeCategories();
 
-  return { props: { trendingAnimes: response, highlightedAnine: response[0] } };
+  const animesByCategoryPromises = responseCategory.map((category) => {
+    return AnimeServices.listAnimesByCategories(category.id);
+  });
+
+  const animesResponse = await Promise.all([
+    AnimeServices.listTrending(),
+    ...animesByCategoryPromises,
+  ]);
+
+  const trendingAnimes = animesResponse.shift();
+
+  return {
+    props: {
+      trendingAnimes,
+      animesByCategory: animesResponse,
+      categories: responseCategory,
+    },
+  };
 };

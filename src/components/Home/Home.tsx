@@ -2,31 +2,36 @@ import { formatAverageRatingFromApi } from '@app/utils/averageRating';
 import { Card } from '../Card';
 import { HighlightedAnime } from '../HighlightedAnime';
 import { HomeProps } from './Home.types';
+import { Carousel } from 'antd';
+import { Carousel as CarouselAnime } from '../Carousel';
 
-export function Home({ trendingAnimes, highlightedAnine }: HomeProps) {
+export function Home({ trendingAnimes, animesByCategory, categories }: HomeProps) {
   return (
     <main className="home-container">
       <div className="home-content">
-        <HighlightedAnime
-          coverUrl={highlightedAnine.attributes.coverImage.large}
-          title={highlightedAnine.attributes.canonicalTitle}
-          description={highlightedAnine.attributes.synopsis}
-          averageRating={formatAverageRatingFromApi(highlightedAnine.attributes.averageRating)}
-          badge1={highlightedAnine.attributes.ageRating}
-          badge2={highlightedAnine.attributes.showType}
-          episodeCount={highlightedAnine.attributes.episodeCount}
-          episodeLength={highlightedAnine.attributes.episodeLength}
-          youtubeVideoId={highlightedAnine.attributes.youtubeVideoId}
-        />
+        <Carousel autoplay>
+          {trendingAnimes?.map((anime) => (
+            <HighlightedAnime
+              key={anime.id}
+              coverUrl={anime?.attributes?.coverImage?.large}
+              title={anime?.attributes?.canonicalTitle}
+              description={anime?.attributes?.synopsis}
+              averageRating={formatAverageRatingFromApi(anime?.attributes?.averageRating)}
+              badge1={anime?.attributes?.ageRating}
+              badge2={anime?.attributes?.showType}
+              episodeCount={anime?.attributes?.episodeCount}
+              episodeLength={anime?.attributes?.episodeLength}
+              youtubeVideoId={anime?.attributes?.youtubeVideoId}
+            />
+          ))}
+        </Carousel>
 
         <div className="home-cards-list">
-          {trendingAnimes?.map((anime) => (
-            <Card
-              key={anime.id}
-              id={anime.id}
-              name={anime.attributes.canonicalTitle}
-              imgUrl={anime.attributes.posterImage.original}
-              averageRating={formatAverageRatingFromApi(anime.attributes?.averageRating)}
+          {animesByCategory?.map((animes, index) => (
+            <CarouselAnime
+              key={categories[index].id}
+              animes={animes}
+              title={categories[index].attributes.title}
             />
           ))}
         </div>
