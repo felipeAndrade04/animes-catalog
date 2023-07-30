@@ -1,5 +1,6 @@
 import { AnimeDetails } from '@app/components/AnimeDetails';
 import { AnimeDetailsProps } from '@app/components/AnimeDetails/AnimeDetails.types';
+import { AnimeDetailsLoading } from '@app/components/AnimeDetailsLoading';
 import AnimeServices from '@app/services/Anime';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
@@ -7,7 +8,9 @@ import { useRouter } from 'next/router';
 export default function AnimePage({ selectedAnime }: AnimeDetailsProps) {
   const { isFallback } = useRouter();
 
-  if (isFallback) return 'Loading...';
+  if (isFallback) {
+    return <AnimeDetailsLoading />;
+  }
 
   return <AnimeDetails selectedAnime={selectedAnime} />;
 }
