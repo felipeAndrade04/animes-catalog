@@ -14,9 +14,9 @@ export function AnimeDetails({ selectedAnime }: AnimeDetailsProps) {
   const [showModalTrailer, setShowModalTrailer] = useState(false);
 
   const {
-    coverImage: { large: cover },
+    coverImage: { tiny: cover },
     canonicalTitle: title,
-    posterImage: { large: poster },
+    posterImage: { medium: poster },
     synopsis,
     averageRating,
     episodeCount,

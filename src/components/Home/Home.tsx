@@ -14,7 +14,7 @@ export function Home({ trendingAnimes, animesByCategory, categories }: HomeProps
             <HighlightedAnime
               key={anime.id}
               id={anime.id}
-              coverUrl={anime?.attributes?.coverImage?.large}
+              coverUrl={anime?.attributes?.coverImage?.tiny}
               title={anime?.attributes?.canonicalTitle}
               description={anime?.attributes?.synopsis}
               averageRating={formatAverageRatingFromApi(anime?.attributes?.averageRating)}
