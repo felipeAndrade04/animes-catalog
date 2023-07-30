@@ -8,7 +8,6 @@
     max-width: 1228px;
     height: 100%;
     margin: 0 auto;
-    padding: 48px 24px 0;
   }
 
   &-cover {
@@ -17,8 +16,8 @@
     img {
       box-shadow: @box-shadow-base;
       width: 100%;
-      object-fit: contain;
-      border-radius: @border-radius-lg;
+      min-height: 220px;
+      object-fit: cover;
     }
 
     &__effect {
@@ -36,12 +35,10 @@
   &-infos {
     max-width: 980px;
     margin: -28px auto 0;
+    padding: 0 24px 24px;
 
     &__title {
-      width: fit-content;
-      width: -moz-fit-content;
       padding: 24px;
-      padding-right: 96px;
       box-shadow: @box-shadow-base;
       border-radius: @border-radius-lg;
       background: @card-background;
@@ -49,6 +46,7 @@
       -webkit-backdrop-filter: blur(12px);
 
       h1 {
+        font-size: 24px !important;
         color: @text-color !important;
         margin: 0 !important;
       }
@@ -56,10 +54,14 @@
 
     &__description {
       display: flex;
-      gap: 48px;
-      margin-top: 48px;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 24px;
 
       &-poster {
+        display: flex;
+        justify-content: center;
+
         img {
           border-radius: @border-radius-md;
           box-shadow: @box-shadow-base;
@@ -94,6 +96,56 @@
         width: fit-content;
         width: -moz-fit-content;
         margin-top: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: @breakpoint-md) {
+  .anime-details {
+    &-content {
+      padding: 48px 24px;
+    }
+
+    &-cover {
+      img {
+        border-radius: @border-radius-lg;
+      }
+    }
+
+    &-infos {
+      &__title {
+        h1 {
+          font-size: 32px !important;
+        }
+      }
+
+      &__description {
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: @breakpoint-lg) {
+  .anime-details {
+    &-infos {
+      &__title {
+        h1 {
+          font-size: 40px !important;
+        }
+      }
+
+      &__description {
+        margin-top: 48px;
+        gap: 48px;
+
+        &-poster {
+          img {
+            width: 330px;
+            height: 470px;
+          }
+        }
       }
     }
   }
