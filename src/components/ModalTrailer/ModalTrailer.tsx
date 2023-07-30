@@ -13,7 +13,7 @@ export function ModalTrailer({ youtubeVideoId, title, isVisible, handleClose }: 
   }
 
   return (
-    <Modal open={isVisible} title={title} width={700} footer={[]} centered onCancel={close}>
+    <Modal open={isVisible} title={title} width={760} footer={[]} centered onCancel={close}>
       {isVisible && (
         <div className="modal-trailer">
           <YouTube videoId={youtubeVideoId} onReady={(event) => setPlayer(event.target)} />

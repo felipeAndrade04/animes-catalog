@@ -5,8 +5,41 @@
     justify-content: center;
 
     iframe {
-      width: 600px !important;
-      height: 338px;
+      width: 300px !important;
+      height: 168px;
+    }
+  }
+}
+
+@media screen and (min-width: @breakpoint-sm) {
+  .modal {
+    &-trailer {
+      iframe {
+        width: 500px !important;
+        height: 280px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: @breakpoint-md) {
+  .modal {
+    &-trailer {
+      iframe {
+        width: 600px !important;
+        height: 338px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: @breakpoint-lg) {
+  .modal {
+    &-trailer {
+      iframe {
+        width: 700px !important;
+        height: 394px;
+      }
     }
   }
 }
