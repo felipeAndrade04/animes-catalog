@@ -13,6 +13,7 @@ export function Home({ trendingAnimes, animesByCategory, categories }: HomeProps
           {trendingAnimes?.map((anime) => (
             <HighlightedAnime
               key={anime.id}
+              id={anime.id}
               coverUrl={anime?.attributes?.coverImage?.large}
               title={anime?.attributes?.canonicalTitle}
               description={anime?.attributes?.synopsis}

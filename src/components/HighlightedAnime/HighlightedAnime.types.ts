@@ -1,4 +1,5 @@
 export interface HighlightedAnimeProps {
+  id: string;
   title: string;
   description: string;
   badge1?: string;

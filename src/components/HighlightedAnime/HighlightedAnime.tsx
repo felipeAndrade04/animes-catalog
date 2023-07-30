@@ -1,13 +1,15 @@
 import { Button, Typography } from 'antd';
-import { YoutubeOutlined } from '@ant-design/icons';
+import { PlusOutlined, YoutubeOutlined } from '@ant-design/icons';
 import { AverageRating } from '../AverageRating';
 import { HighlightedAnimeProps } from './HighlightedAnime.types';
 import { ModalTrailer } from '../ModalTrailer';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const { Paragraph, Title } = Typography;
 
 export function HighlightedAnime({
+  id,
   description,
   title,
   averageRating,
@@ -19,6 +21,7 @@ export function HighlightedAnime({
   coverUrl,
 }: HighlightedAnimeProps) {
   const [showModalTrailer, setShowModalTrailer] = useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -34,22 +37,33 @@ export function HighlightedAnime({
             {episodeLength && <span>{episodeLength}m</span>}
             {averageRating && <AverageRating score={averageRating} />}
           </div>
-
           <Paragraph className="main-anime__infos-paragraph" ellipsis={{ rows: 2 }}>
             {description}
           </Paragraph>
 
-          {youtubeVideoId && (
+          <div className="main-anime__infos-buttons">
             <Button
-              onClick={() => setShowModalTrailer(true)}
+              onClick={() => router.push(`anime/${id}`)}
               ghost
               shape="round"
-              icon={<YoutubeOutlined />}
+              icon={<PlusOutlined />}
               size="middle"
             >
-              Assistir Trailer
+              Ver Detalhes
             </Button>
-          )}
+
+            {youtubeVideoId && (
+              <Button
+                onClick={() => setShowModalTrailer(true)}
+                ghost
+                shape="round"
+                icon={<YoutubeOutlined />}
+                size="middle"
+              >
+                Assistir Trailer
+              </Button>
+            )}
+          </div>
         </div>
       </article>
 
