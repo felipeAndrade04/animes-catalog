@@ -5,10 +5,14 @@ import { AverageRating } from '../AverageRating';
 import { formatAverageRatingFromApi } from '@app/utils/averageRating';
 import { formatDateFromApi } from '@app/utils/date';
 import { YoutubeOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import { ModalTrailer } from '../ModalTrailer';
 
 const { Paragraph, Title } = Typography;
 
 export function AnimeDetails({ selectedAnime }: AnimeDetailsProps) {
+  const [showModalTrailer, setShowModalTrailer] = useState(false);
+
   const {
     coverImage: { large: cover },
     canonicalTitle: title,
@@ -110,6 +114,7 @@ export function AnimeDetails({ selectedAnime }: AnimeDetailsProps) {
 
               {youtubeVideoId && (
                 <Button
+                  onClick={() => setShowModalTrailer(true)}
                   ghost
                   shape="round"
                   icon={<YoutubeOutlined />}
@@ -123,6 +128,13 @@ export function AnimeDetails({ selectedAnime }: AnimeDetailsProps) {
           </div>
         </section>
       </div>
+
+      <ModalTrailer
+        isVisible={showModalTrailer}
+        title={title}
+        youtubeVideoId={youtubeVideoId}
+        handleClose={() => setShowModalTrailer(false)}
+      />
     </main>
   );
 }

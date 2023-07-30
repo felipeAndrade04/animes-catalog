@@ -1,4 +1,5 @@
 import http from '../http';
 import { AnimeServices } from './animeServices';
 
-export default new AnimeServices(http);
+const animeServices = new AnimeServices(http);
+export default animeServices;
