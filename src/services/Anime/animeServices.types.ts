@@ -1,3 +1,6 @@
+import { Anime } from '@app/types/Anime';
+
 export interface AnimeServicesInterface {
-  listTrending: () => void;
+  listTrending: () => Promise<Anime[]>;
+  getById: (id: string) => Promise<Anime>;
 }

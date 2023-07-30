@@ -1,5 +1,9 @@
-export interface AnimeResponseData {
+export interface AnimesResponseData {
   data: Anime[];
+}
+
+export interface AnimeResponseData {
+  data: Anime;
 }
 
 export interface Anime {
@@ -24,6 +28,7 @@ export interface AnimeAttributes {
   endDate: any;
   ratingRank: number;
   ageRating: string;
+  ageRatingGuide: string;
   posterImage: PosterImage;
   coverImage: CoverImage;
   episodeCount: any;
