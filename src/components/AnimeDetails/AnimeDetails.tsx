@@ -41,7 +41,7 @@ export function AnimeDetails({ selectedAnime }: AnimeDetailsProps) {
 
           <div className="anime-details-infos__description">
             <figure className="anime-details-infos__description-poster">
-              <Image src={poster} alt={`${title} - cover`} width={380} height={540} />
+              <Image src={poster} alt={`${title} - cover`} width={260} height={370} />
             </figure>
             <article className="anime-details-infos__description-info">
               <div className="anime-details-infos__description-cell">
