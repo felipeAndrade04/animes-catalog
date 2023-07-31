@@ -14,9 +14,9 @@ export function AnimeDetails({ selectedAnime }: AnimeDetailsProps) {
   const [showModalTrailer, setShowModalTrailer] = useState(false);
 
   const {
-    coverImage: { tiny: cover },
+    coverImage,
     canonicalTitle: title,
-    posterImage: { medium: poster },
+    posterImage,
     synopsis,
     averageRating,
     episodeCount,
@@ -29,10 +29,12 @@ export function AnimeDetails({ selectedAnime }: AnimeDetailsProps) {
   return (
     <main className="anime-details-container">
       <div className="anime-details-content">
-        <header className="anime-details-cover">
-          <img src={cover} alt={`${title} - cover`} />
-          <div className="anime-details-cover__effect" />
-        </header>
+        {coverImage?.tiny && (
+          <header className="anime-details-cover">
+            <img src={coverImage?.tiny} alt={`${title} - cover`} />
+            <div className="anime-details-cover__effect" />
+          </header>
+        )}
 
         <section className="anime-details-infos">
           <div className="anime-details-infos__title">
@@ -41,7 +43,7 @@ export function AnimeDetails({ selectedAnime }: AnimeDetailsProps) {
 
           <div className="anime-details-infos__description">
             <figure className="anime-details-infos__description-poster">
-              <Image src={poster} alt={`${title} - cover`} width={260} height={370} />
+              <Image src={posterImage?.medium} alt={`${title} - cover`} width={260} height={370} />
             </figure>
             <article className="anime-details-infos__description-info">
               <div className="anime-details-infos__description-cell">
