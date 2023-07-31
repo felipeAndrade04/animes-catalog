@@ -2,6 +2,11 @@
   Anime Catalog
 </h1>
 
+<h1 align="center">
+<img src="https://ik.imagekit.io/lzkiso6iri/READMEs/catalog%20anime/Screenshot%202023-07-30%20at%2021.23.01_Ipvgf5nmF.png?updatedAt=1690763084260">
+  <img src="https://ik.imagekit.io/lzkiso6iri/READMEs/catalog%20anime/Screenshot%202023-07-30%20at%2021.24.30_y09j4Hysi.png?updatedAt=1690763084291">
+</h1>
+
 ## Indice
 
 - [Indice](#indice)
